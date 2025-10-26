@@ -1,5 +1,5 @@
 import express from "express";
-import chromium from "@sparticuz/chromium-min";
+import chromium from "@sparticuz/chromium";
 import puppeteer from "puppeteer-core";
 
 const app = express();
@@ -13,16 +13,15 @@ app.get("/", async (req, res) => {
 
   try {
     const browser = await puppeteer.launch({
-      args: chromium.args,
+      args: [...chromium.args, "--no-sandbox", "--disable-setuid-sandbox"],
       defaultViewport: chromium.defaultViewport,
       executablePath: await chromium.executablePath(),
-      headless: chromium.headless,
+      headless: true
     });
 
     const page = await browser.newPage();
     await page.goto(targetUrl, { waitUntil: "networkidle2", timeout: 60000 });
 
-    // Extraer todos los enlaces que empiecen con "https://click1"
     const links = await page.$$eval('a[href^="https://click1"]', as =>
       as.map(a => a.href.trim())
     );
@@ -34,7 +33,7 @@ app.get("/", async (req, res) => {
       urls: [...new Set(links)],
     });
   } catch (err) {
-    console.error(err);
+    console.error("❌ Error:", err);
     res.status(500).json({ error: err.message });
   }
 });
