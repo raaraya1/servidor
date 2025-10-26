@@ -1,0 +1,138 @@
+[
+  {
+    "name": "_d2id",
+    "value": "79dc9de0-8f0e-4f22-bc49-028956058b49-n",
+    "domain": ".portalinmobiliario.com",
+    "path": "/",
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "_d2id",
+    "value": "79dc9de0-8f0e-4f22-bc49-028956058b49",
+    "domain": ".portalinmobiliario.com",
+    "path": "/",
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "main_domain",
+    "value": "",
+    "domain": ".portalinmobiliario.com",
+    "path": "/",
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "main_attributes",
+    "value": "",
+    "domain": ".portalinmobiliario.com",
+    "path": "/",
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "categories",
+    "value": "",
+    "domain": ".portalinmobiliario.com",
+    "path": "/",
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "last_query",
+    "value": "",
+    "domain": ".portalinmobiliario.com",
+    "path": "/",
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "category",
+    "value": "MLC1459",
+    "domain": ".portalinmobiliario.com",
+    "path": "/",
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "backend_dejavu_info",
+    "value": "j%3A%7B%7D",
+    "domain": ".portalinmobiliario.com",
+    "path": "/",
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "_mldataSessionId",
+    "value": "3b1a360e-1e30-4b7f-94ba-bcc807fe83cb",
+    "domain": ".portalinmobiliario.com",
+    "path": "/",
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "_snoopy",
+    "value": "eyJmaW5nZXJwcmludCI6InlSckZGU3VEQms3UHFPZjRGYjVxTGxENXJ3YU9kekZIUVJnSHdVSHBlL2ZNS01VR3k5S1JDS0VwSUlCMC9xcHhLTG90RjE3czBWa0V6aEdWMFE0R0tRam1kUzdUZ0hrMEEyNUxOcFJqeVhWYUp5Z0pBWDVSZ2Z5cjBacDZkemZGR1BsME5UYzVNVXVlWFZ5RC9ZVzE0TUNad0hkVHVnemFyemsxN29vaWl1bHRKYk9tQnpjPSIsImtleSI6IjUySkoxY1RCOHp1ZkhSOEJ3TFNYdy9xbTR1czdQcCtCS01kclQxT3I1dUtiTGlMeFdLaEFnRGtGdG55TllGMXRGMWxjcUsvN1dmQ25tSzVwUjdkUC9FSGlvT2hFQ25jMCJ9",
+    "domain": ".portalinmobiliario.com",
+    "path": "/",
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "orguseridp",
+    "value": "1091141094",
+    "domain": ".portalinmobiliario.com",
+    "path": "/",
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "orguserid",
+    "value": "d0d74000T0d4T",
+    "domain": ".portalinmobiliario.com",
+    "path": "/",
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "orgnickp",
+    "value": "ARAYARODRIGO20230316112449",
+    "domain": ".portalinmobiliario.com",
+    "path": "/",
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "cookiesPreferencesLogged",
+    "value": "%7B%22userId%22%3A1091141094%2C%22categories%22%3A%7B%7D%7D",
+    "domain": ".portalinmobiliario.com",
+    "path": "/",
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "cookiesPreferencesLoggedFallback",
+    "value": "%7B%22userId%22%3A1091141094%2C%22categories%22%3A%7B%7D%7D",
+    "domain": ".portalinmobiliario.com",
+    "path": "/",
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "cookiesPreferencesNotLogged",
+    "value": "%7B%22categories%22%3A%7B%7D%7D",
+    "domain": ".portalinmobiliario.com",
+    "path": "/",
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "aws-waf-token",
+    "value": "4925c784-2b1c-461d-a3f4-4c6c845a7721:EAoAklyBWqBGBAAA:6t33JRCSPmCFACGY1mrkk9t/Lnx6Fu8gdGE0kD3WcBmpW344xF2XdIfKUhp6BlC5uOZTuBJa/+3treCcpydwrb4EnEQlvCvEk4y/0dSuaYJO85x6tMG0pxpj1F4jwqnrxsLw+WVtGVU98i9K1j6RMjvF9gana8XbtttiiAfyzlN0LISuiU2cnuXYNRWG3vd+OBpKsMJ3iVCs2KitagH0UZPQvwMPV7JF+bPe",
+    "domain": ".portalinmobiliario.com",
+    "path": "/",
+    "httpOnly": false,
+    "secure": true
+  }
+]
