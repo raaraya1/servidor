@@ -1,6 +1,7 @@
 import express from "express";
 import chromium from "@sparticuz/chromium";
 import puppeteer from "puppeteer-core";
+import fs from "fs";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -24,20 +25,17 @@ app.get("/", async (req, res) => {
     console.log(`🌐 Navegando a ${targetUrl}`);
     await page.goto(targetUrl, { waitUntil: "domcontentloaded", timeout: 60000 });
 
-    // 🔹 Esperar explícitamente a que se carguen los enlaces click1 (dinámicos)
-    await page.waitForSelector('a[href^="https://click1"]', { timeout: 30000 });
+    // Esperar un poco más para asegurar carga dinámica
+    await page.waitForTimeout(8000);
 
-    // 🔹 Extraer todos los enlaces click1 visibles
-    const links = await page.$$eval('a[href^="https://click1"]', as =>
-      as.map(a => a.href.trim())
-    );
+    // Extraer HTML visible
+    const html = await page.content();
 
     await browser.close();
 
-    res.json({
-      total: links.length,
-      urls: [...new Set(links)],
-    });
+    // Enviar parte del HTML visible al cliente
+    res.setHeader("Content-Type", "text/html; charset=utf-8");
+    res.send(html);
   } catch (err) {
     console.error("❌ Error:", err);
     res.status(500).json({ error: err.message });
