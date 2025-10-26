@@ -1,4 +1,5 @@
 import express from "express";
+import fs from "fs";
 import chromium from "@sparticuz/chromium";
 import puppeteer from "puppeteer-core";
 
@@ -26,32 +27,25 @@ app.get("/", async (req, res) => {
 
     const page = await browser.newPage();
 
+    // 🔹 Cargar cookies desde archivo
+    const cookies = JSON.parse(fs.readFileSync("./cookies.json", "utf8"));
+    await page.setCookie(...cookies);
+
     await page.setUserAgent(
       "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.5993.118 Safari/537.36"
     );
 
-    await page.evaluateOnNewDocument(() => {
-      Object.defineProperty(navigator, "webdriver", { get: () => undefined });
-    });
-
-    console.log(`🌐 Navegando a ${targetUrl}`);
     await page.goto(targetUrl, { waitUntil: "domcontentloaded", timeout: 60000 });
 
-    // Simula actividad de usuario
-    await page.mouse.move(200, 200);
-    await page.mouse.wheel({ deltaY: 200 });
-    await page.mouse.wheel({ deltaY: 1000 });
-    await page.waitForTimeout?.(8000) ?? new Promise(r => setTimeout(r, 8000));
-
-    // Scrollea varias veces para cargar más anuncios
+    // Simular scroll para cargar más resultados
     for (let i = 0; i < 5; i++) {
       await page.evaluate(() => window.scrollBy(0, window.innerHeight));
-      await new Promise(r => setTimeout(r, 2500));
+      await new Promise((r) => setTimeout(r, 2500));
     }
 
-    // Extraer todos los enlaces con click1
-    const links = await page.$$eval('a[href^="https://click1"]', as =>
-      as.map(a => a.href.trim())
+    // Extraer los enlaces click1
+    const links = await page.$$eval('a[href^="https://click1"]', (as) =>
+      as.map((a) => a.href.trim())
     );
 
     await browser.close();
