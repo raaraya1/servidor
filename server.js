@@ -13,7 +13,13 @@ app.get("/", async (req, res) => {
 
   try {
     const browser = await puppeteer.launch({
-      args: [...chromium.args, "--no-sandbox", "--disable-setuid-sandbox"],
+      args: [
+        ...chromium.args,
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-blink-features=AutomationControlled",
+        "--window-size=1280,800",
+      ],
       defaultViewport: chromium.defaultViewport,
       executablePath: await chromium.executablePath(),
       headless: true,
@@ -21,19 +27,37 @@ app.get("/", async (req, res) => {
 
     const page = await browser.newPage();
 
+    // 🧠 Finge ser un navegador real de escritorio
+    await page.setUserAgent(
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.5993.118 Safari/537.36"
+    );
+
+    await page.setExtraHTTPHeaders({
+      "accept-language": "es-CL,es;q=0.9,en;q=0.8",
+    });
+
+    // 🕵️ Evita detección de automatización
+    await page.evaluateOnNewDocument(() => {
+      Object.defineProperty(navigator, "webdriver", { get: () => undefined });
+    });
+
     console.log(`🌐 Navegando a ${targetUrl}`);
     await page.goto(targetUrl, { waitUntil: "domcontentloaded", timeout: 60000 });
 
-    // Esperar unos segundos manualmente (equivalente a waitForTimeout)
-    await new Promise(r => setTimeout(r, 8000));
+    // Esperar que cargue JS dinámico
+    await new Promise((r) => setTimeout(r, 8000));
 
-    // Extraer HTML visible después de que cargue JS
-    const html = await page.content();
+    // Buscar todos los enlaces click1
+    const links = await page.$$eval('a[href^="https://click1"]', (as) =>
+      as.map((a) => a.href.trim())
+    );
 
     await browser.close();
 
-    res.setHeader("Content-Type", "text/html; charset=utf-8");
-    res.send(html);
+    res.json({
+      total: links.length,
+      urls: [...new Set(links)],
+    });
   } catch (err) {
     console.error("❌ Error:", err);
     res.status(500).json({ error: err.message });
